@@ -17,7 +17,7 @@ class ProdutoDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function ($p) {
-                $acoes = link_to(route('produtos.edit', $p),'Editar', ['class' => 'btn btn-sm btn-primary mr-1']);
+                $acoes = link_to(route('produtos.edit', $p),'Editar', ['class' => 'btn btn-sm btn-secondary mr-1']);
                 $acoes .= FormFacade::button('Excluir', ['class' => 'btn btn-sm btn-danger', 'onclick' => "excluir('" . route('produtos.destroy', $p) . "')"]);
 
                 return $acoes;
@@ -46,11 +46,11 @@ class ProdutoDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-success')
                         ->text('<i class="fas fa-plus mr-1"></i>Cadastrar Novo'),
 
                         Button::make('export')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-warning')
                         ->text('<i class="fas fa-download mr-1"></i>Exportar'),
                         
                         Button::make('print')
@@ -61,16 +61,16 @@ class ProdutoDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [
+        return [            
+            Column::make('descricao'),
+            Column::make('estoque'),
+            Column::make('preco'),
+            Column::make('nome')->name('fabricantes.nome'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->addClass('text-center')
-                  ->title('Ações'),
-            Column::make('descricao'),
-            Column::make('estoque'),
-            Column::make('preco'),
-            Column::make('nome')->name('fabricantes.nome')
+                  ->title('Ações')
         ];
     }
 

@@ -17,7 +17,7 @@ class ClienteDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function ($c) {
-                $acoes = link_to(route('clientes.edit', $c),'Editar', ['class' => 'btn btn-sm btn-primary mr-1']);
+                $acoes = link_to(route('clientes.edit', $c),'Editar', ['class' => 'btn btn-sm btn-secondary mr-1']);
                 $acoes .= FormFacade::button('Excluir', ['class' => 'btn btn-sm btn-danger', 'onclick' => "excluir('" . route('clientes.destroy', $c) . "')"]);
 
                 return $acoes;
@@ -39,11 +39,11 @@ class ClienteDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-success')
                         ->text('<i class="fas fa-plus mr-1"></i>Cadastrar Novo'),
                         
                         Button::make('export')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-warning')
                         ->text('<i class="fas fa-download mr-1"></i>Exportar'),
                         
 
@@ -56,15 +56,16 @@ class ClienteDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->addClass('text-center'),
+        return [            
             Column::make('nome'),
             Column::make('email'),
             Column::make('telefone'),
-            column::make('cpf')
+            column::make('cpf'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->addClass('text-center')
+                  ->title('Ações')
         ];
     }
 

@@ -38,11 +38,11 @@ class FabricanteDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-success')
                         ->text('<i class="fas fa-plus mr-1"></i>Cadastrar Novo'),
 
                         Button::make('export')
-                        ->addClass('btn bg-primary')
+                        ->addClass('btn bg-warning')
                         ->text('<i class="fas fa-download mr-1"></i>Exportar'),
 
                         Button::make('print')
@@ -53,16 +53,16 @@ class FabricanteDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [
+        return [            
+            Column::make('nome'),
+            Column::make('site'),
+            Column::make('created_at')->title('Data de Criação'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center')
-                  ->title('Ações'),
-            Column::make('nome'),
-            Column::make('site'),
-            Column::make('created_at')->title('Data de Criação'),
+                  ->title('Ações')
         ];
     }
 
