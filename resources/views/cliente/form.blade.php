@@ -7,8 +7,7 @@
 @stop
 
 @section('content')
-    @include('flash::message')
-
+    
     <div class="card card-primary">
         @if (isset($cliente))
             {!! Form::model($cliente, ['url' => route('clientes.update', $cliente), 'method' => 'put']) !!}

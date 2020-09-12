@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Fabricante;
+use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -16,8 +17,11 @@ class FabricanteDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function ($f) {
-                return link_to(route('fabricantes.edit', $f),'Editar', ['class' => 'btn btn-sm btn-primary']);
-            })
+                $acoes = link_to(route('produtos.edit', $f),'Editar', ['class' => 'btn btn-sm btn-secondary mr-1']);
+                $acoes .= FormFacade::button('Excluir', ['class' => 'btn btn-sm btn-danger', 'onclick' => "excluir('" . route('produtos.destroy', $f) . "')"]);
+
+                return $acoes;
+            })              
             ->editColumn('created_at', function ($f) {
                 return $f->created_at->format('d/m/Y');
             });
@@ -53,16 +57,15 @@ class FabricanteDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [            
-            Column::make('nome'),
-            Column::make('site'),
-            Column::make('created_at')->title('Data de Criação'),
+        return [
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
                   ->addClass('text-center')
-                  ->title('Ações')
+                  ->title('Ações'),
+            Column::make('nome'),
+            Column::make('site'),
+            Column::make('created_at')->title('Data de Criação')
         ];
     }
 

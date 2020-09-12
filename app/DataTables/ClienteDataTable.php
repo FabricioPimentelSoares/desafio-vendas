@@ -56,16 +56,16 @@ class ClienteDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [            
-            Column::make('nome'),
-            Column::make('email'),
-            Column::make('telefone'),
-            column::make('cpf'),
+        return [
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->addClass('text-center')
-                  ->title('Ações')
+                  ->title('Ações'),
+            Column::make('nome'),
+            Column::make('email'),
+            Column::make('telefone'),
+            column::make('cpf')
         ];
     }
 

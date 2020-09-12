@@ -61,16 +61,16 @@ class ProdutoDataTable extends DataTable
 
     protected function getColumns()
     {
-        return [            
-            Column::make('descricao'),
-            Column::make('estoque'),
-            Column::make('preco'),
-            Column::make('nome')->name('fabricantes.nome'),
+        return [
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->addClass('text-center')
-                  ->title('Ações')
+                  ->title('Ações'),
+            Column::make('descricao'),
+            Column::make('estoque'),
+            Column::make('preco'),
+            Column::make('nome')->name('fabricantes.nome')
         ];
     }
 
