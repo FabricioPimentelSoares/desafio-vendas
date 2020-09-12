@@ -239,7 +239,7 @@ return [
      [
         'url' => 'produtos',
         'text' => 'Produtos',
-        'icon' => 'fas fa-boxes'
+        'icon' => 'fas fa-grin-hearts'
     ]   
     ],
 
