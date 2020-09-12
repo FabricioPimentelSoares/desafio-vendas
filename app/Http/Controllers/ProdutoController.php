@@ -28,6 +28,16 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         $produto = ProdutoService::store($request->all());
+
+        if ($produto) {
+            flash('Produto cadastrado com sucesso')->success();
+
+            return back();
+        }
+
+        flash('Erro ao salvar o produto')->error();
+
+        return back()->withInput();
     }
 
     public function show(Produto $produto)

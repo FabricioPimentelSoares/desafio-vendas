@@ -240,6 +240,11 @@ return [
         'url' => 'produtos',
         'text' => 'Produtos',
         'icon' => 'fas fa-grin-hearts'
+     ],
+     [
+        'url' => 'clientes',
+        'text' => 'Clientes',
+        'icon' => 'fas fa-users'
     ]   
     ],
 
