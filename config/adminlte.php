@@ -279,12 +279,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => '//vendor.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'location' => '/vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => '//vendor.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'location' => '/vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
